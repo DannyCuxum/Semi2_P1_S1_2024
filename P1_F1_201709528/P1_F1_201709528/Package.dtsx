@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{947BFE4B-6AE4-4A41-B60E-2904793837BB}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{1D45D22D-4DD9-45FC-895A-0944C11C1EFE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -967,6 +967,78 @@
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F84237B5-CF04-4459-990A-AEF1CDBA63E9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoCliente">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5081486D-F2B6-4E1B-9CEF-8F3CDA1FDA3E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoCompras">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1006B070-FDF3-47D2-ADF5-BAE0BC458447}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoFecha">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA81DB09-D778-472E-A2FD-8CADB0B76FD3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoProducto">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D5D5B481-0E83-4C59-84D4-C35E3FB21FE6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoProveedor">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{40897893-06CF-4A94-B5AF-0D4883CF089A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoSucursal">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{014DCA12-2DBF-4876-9B3B-391AED0667DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoVendedor">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CF1D840-2786-4F39-B922-FB3546910A0B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContadoVentas">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{887DF2AB-E9E1-4278-8AEC-C7CD9646A229}"
@@ -30568,6 +30640,855 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Tarea Script"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Tarea Script"
+      DTS:DTSID="{693A0EE0-F335-4A25-ABA8-FD43CC02E426}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Script"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_a5329d8d77104b078f1bb215d4bb5398"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::ContadoCliente,User::ContadoCompras,User::ContadoFecha,User::ContadoProducto,User::ContadoProveedor,User::ContadoSucursal,User::ContadoVendedor,User::ContadoVentas,User::FolderError">
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+#endregion
+
+namespace ST_a5329d8d77104b078f1bb215d4bb5398
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            try
+            {
+
+                SqlConnection sqlConnection = new SqlConnection();
+                sqlConnection = (SqlConnection)(Dts.Connections["DANNYC.DBWS"].AcquireConnection(Dts.Transaction) as SqlConnection);
+
+                string query = "SELECT COUNT(*) FROM Proveedor";
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoProveedor"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoProveedor"].Value = 0;
+                    }
+
+                }
+
+
+                ///-------------------
+                string query2 = "SELECT COUNT(*) FROM Sucursal";
+                using (SqlCommand cmd = new SqlCommand(query2, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoSucursal"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoSucursal"].Value = 0;
+                    }
+
+                }
+
+                ///-------------------
+                SqlConnection sqlConnection3 = new SqlConnection();
+                sqlConnection = (SqlConnection)(Dts.Connections["DANNYC.DBWS"].AcquireConnection(Dts.Transaction) as SqlConnection);
+
+                string query3 = "SELECT COUNT(*) FROM Producto";
+                using (SqlCommand cmd = new SqlCommand(query3, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoProducto"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoProducto"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+                string query4 = "SELECT COUNT(*) FROM Fecha";
+                using (SqlCommand cmd = new SqlCommand(query4, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoFecha"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoFecha"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+                string query5 = "SELECT COUNT(*) FROM Cliente";
+                using (SqlCommand cmd = new SqlCommand(query5, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoCliente"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoCliente"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+                string query6 = "SELECT COUNT(*) FROM Vendedor";
+                using (SqlCommand cmd = new SqlCommand(query6, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoVendedor"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoVendedor"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+                string query7 = "SELECT COUNT(*) FROM Compras";
+                using (SqlCommand cmd = new SqlCommand(query7, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoCompras"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoCompras"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+                string query8 = "SELECT COUNT(*) FROM Ventas";
+                using (SqlCommand cmd = new SqlCommand(query8, sqlConnection))
+                {
+                    // Ejecutar la consulta y obtener el resultado 
+                    object result = cmd.ExecuteScalar();
+                    // Verificar si el resultado no es nulo 
+                    if (result != null)
+                    {
+                        // Convertir el resultado a un tipo de dato apropiado (puede ser int, long, etc.)
+                        int countResult = Convert.ToInt32(result);
+                        // Asignar el resultado a una variable de SSIS 
+                        Dts.Variables["User::ContadoVentas"].Value = countResult;
+                    }
+                    else
+                    {
+                        //Manejar el caso donde el resultado es nulo 
+                        Dts.Variables["User::ContadoVentas"].Value = 0;
+                    }
+
+                }
+                ///-------------------
+
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.CreateText(Dts.Variables["User::FolderError"].Value.ToString() + "\\" + "ErrorLog.log"))
+                {
+                    sw.WriteLine(ex.ToString());
+                    Dts.TaskResult = (int)ScriptResults.Failure;
+                }
+
+            }
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Settings.get_Default():ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Sett" +
+    "ings")]
+
+namespace ST_a5329d8d77104b078f1bb215d4bb5398.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_a5329d8d77104b078f1bb215d4bb5398.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D861664-04E2-4897-BA12-5C7CA28B9C9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_a5329d8d77104b078f1bb215d4bb5398</RootNamespace>
+    <AssemblyName>ST_a5329d8d77104b078f1bb215d4bb5398</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_a5329d8d77104b078f1bb215d4bb5398</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_a5329d8d77104b078f1bb215d4bb5398</msb:DisplayName>
+    <msb:ProjectId>{4E3E87B5-2AE1-4801-B860-3F6E23FDA6F5}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_a5329d8d77104b078f1bb215d4bb5398.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_a5329d8d77104b078f1bb215d4bb5398")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("ST_a5329d8d77104b078f1bb215d4bb5398")]
+[assembly: AssemblyCopyright("Copyright @ HP Inc. 2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_a5329d8d77104b078f1bb215d4bb5398.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_a5329d8d77104b078f1bb215d4bb5398.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_a5329d8d77104b078f1bb215d4bb5398.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAE/M72UAAAAAAAAAAOAAIiALATAAABoAAAAIAAAAAAAARjgA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPQ3AABPAAAAAEAAAJQEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAATBgAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAJQEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAo
+OAAAAAAAAEgAAAACAAUAECYAACwRAAABAAAAAAAAADw3AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswAgBYBAAAAQAAEXMQAAAKCgIoEQAACm8SAAAKcgEAAHBv
+EwAACgIoEQAACm8UAAAKbxUAAAp1DwAAAQpyGQAAcAZzFgAACgsHbxcAAAoMCCwpCCgYAAAKDQIo
+EQAACm8ZAAAKclcAAHBvGgAACgmMIwAAAW8bAAAKKyACKBEAAApvGQAACnJXAABwbxoAAAoWjCMA
+AAFvGwAACt4KBywGB28cAAAK3HKFAABwBnMWAAAKEwQRBG8XAAAKEwURBSwsEQUoGAAAChMGAigR
+AAAKbxkAAApywQAAcG8aAAAKEQaMIwAAAW8bAAAKKyACKBEAAApvGQAACnLBAABwbxoAAAoWjCMA
+AAFvGwAACt4MEQQsBxEEbxwAAArccxAAAAomAigRAAAKbxIAAApyAQAAcG8TAAAKAigRAAAKbxQA
+AApvFQAACnUPAAABCnLtAABwBnMWAAAKEwcRB28XAAAKEwgRCCwsEQgoGAAAChMJAigRAAAKbxkA
+AApyKQEAcG8aAAAKEQmMIwAAAW8bAAAKKyACKBEAAApvGQAACnIpAQBwbxoAAAoWjCMAAAFvGwAA
+Ct4MEQcsBxEHbxwAAArcclUBAHAGcxYAAAoTChEKbxcAAAoTCxELLCwRCygYAAAKEwwCKBEAAApv
+GQAACnKLAQBwbxoAAAoRDIwjAAABbxsAAAorIAIoEQAACm8ZAAAKcosBAHBvGgAAChaMIwAAAW8b
+AAAK3gwRCiwHEQpvHAAACtxysQEAcAZzFgAAChMNEQ1vFwAAChMOEQ4sLBEOKBgAAAoTDwIoEQAA
+Cm8ZAAAKcusBAHBvGgAAChEPjCMAAAFvGwAACisgAigRAAAKbxkAAApy6wEAcG8aAAAKFowjAAAB
+bxsAAAreDBENLAcRDW8cAAAK3HIVAgBwBnMWAAAKExAREG8XAAAKExERESwsEREoGAAAChMSAigR
+AAAKbxkAAApyUQIAcG8aAAAKERKMIwAAAW8bAAAKKyACKBEAAApvGQAACnJRAgBwbxoAAAoWjCMA
+AAFvGwAACt4MERAsBxEQbxwAAArccn0CAHAGcxYAAAoTExETbxcAAAoTFBEULCwRFCgYAAAKExUC
+KBEAAApvGQAACnK3AgBwbxoAAAoRFYwjAAABbxsAAAorIAIoEQAACm8ZAAAKcrcCAHBvGgAAChaM
+IwAAAW8bAAAK3gwREywHERNvHAAACtxy4QIAcAZzFgAAChMWERZvFwAAChMXERcsLBEXKBgAAAoT
+GAIoEQAACm8ZAAAKchkDAHBvGgAAChEYjCMAAAFvGwAACisgAigRAAAKbxkAAApyGQMAcG8aAAAK
+FowjAAABbxsAAAreDBEWLAcRFm8cAAAK3N5cExkCKBEAAApvGQAACnJBAwBwbxoAAApvHQAACm8e
+AAAKcmUDAHAoHwAACiggAAAKExoRGhEZbx4AAApvIQAACgIoEQAAChdvIgAACt4MERosBxEabxwA
+AArc3gAqQfQAAAIAAAA9AAAAVQAAAJIAAAAKAAAAAAAAAAIAAACpAAAAWwAAAAQBAAAMAAAAAAAA
+AAIAAABOAQAAWwAAAKkBAAAMAAAAAAAAAAIAAADCAQAAWwAAAB0CAAAMAAAAAAAAAAIAAAA2AgAA
+WwAAAJECAAAMAAAAAAAAAAIAAACqAgAAWwAAAAUDAAAMAAAAAAAAAAIAAAAeAwAAWwAAAHkDAAAM
+AAAAAAAAAAIAAACSAwAAWwAAAO0DAAAMAAAAAAAAAAIAAAAtBAAAHAAAAEkEAAAMAAAAAAAAAAAA
+AAAAAAAA+wMAAPsDAABcAAAAEgAAAR4CKCMAAAoqHgIoJAAACiqufgEAAAQtHnKBAwBw0AMAAAIo
+JQAACm8mAAAKcycAAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+AwAABCoeAigoAAAKKi5z
+CAAABoADAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAbAQAACN+AADY
+BAAAgAYAACNTdHJpbmdzAAAAAFgLAAD0AwAAI1VTAEwPAAAQAAAAI0dVSUQAAABcDwAA0AEAACNC
+bG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAAAQAAACoAAAAFAAAABgAAAAkAAAABAAAAKAAA
+AAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAAFAAAAAQAAAAEAAAAAANUDAQAAAAAABgB7AioF
+BgAKAyoFBgDHARcFDwCeBQAABgD0AWMEBgBeAmMEBgA/AmMEBgDxAmMEBgCbAmMEBgC0AmMEBgAL
+AmMEBgAmAkIDCgDPAoQDCgA+AYQDDgCHBEoGDgCGAEoGBgAoBgYEBgCVBAYEBgDyBDYABgANBAYE
+BgCqARcFBgDQBEoFBgCyBD4EEgB6Ab8DEgDbAb8DEgBaASkEBgCPASoFCgCtA4QDFgD3Bd8AFgDg
+BN8ADgB8AJ8EBgBgBgYEFgDgBd8AFgChAN8ABgADAAYEBgCqAAYEBgBeAwYEBgDaADYABgD/BDYA
+BgAJAQYEBgC2AAYEBgB3BmMEAAAAAC0AAAAAAAEAAQABABAAHgQJADkAAQABAAAAEABRBa0FRQAB
+AAMAAAEQAOoFrQVpAAMABwADAQAAEwYAAFEABAAKABEAEgS+ABEALgHCABEAkQDGAAYGXwDKAFaA
+AwbNAFaADgHNAFAgAAAAAIYAJAQGAAEAqCUAAAAAhhgKBQYAAQCwJQAAAACDGAoFBgABALglAAAA
+AJMIzATRAAEA5CUAAAAAkwgWAdYAAQDrJQAAAACTCCIB2wABAPMlAAAAAJYILwbhAAIA+iUAAAAA
+hhgKBQYAAgACJgAAAACRGBAF5gACAAAAAQA8AwkACgUBABEACgUGABkACgUKACkACgUQADEACgUQ
+ADkACgUQAEEACgUQAEkACgUQAFEACgUQAFkACgUQAGEACgUQAGkACgUGAKkACgUGAMkACgUVANkA
+CgUGAHkACgUGAHEACwZEAOEA8wVJAOkA/QNOAOEAUwRUAPEAdQRYAIEACgVdAPkAvgRUAAEBAQBk
+AOEA3AVpAAkB/QNvABEBMgN2ACEBcgEGABEBKANUAIkAXAN7ACkBIQZ/ADEBaAaFADkB/wAQAOEA
+OwYBAHEACgUGAIkACgUGAEEByACLAEEBcwaUALEACgWaANEACgUGAAgAFAC0AAgAGAC5ACkAcwAh
+AS4ACwD5AC4AEwACAS4AGwAhAS4AIwAqAS4AKwBTAS4AMwBTAS4AOwBZAS4AQwAqAS4ASwBmAS4A
+UwBTAS4AWwCEAUMAYwC5AEkAcwAhAWEAewC5AGMAawC5ABsAAwABAAQAAwAAANAE6gAAADYB7wAA
+ADMG9AACAAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAAAIQiN5cAAAAAAAAJAAAABAAAAAAA
+AAAAAAAAogBzAAAAAAAQAAAAAAAAAAAAAACrAGUDAAAAAAQAAAAAAAAAAAAAAKIAZwAAAAAABAAA
+AAAAAAAAAAAAogAGBAAAAAAQAAAAAAAAAAAAAACrAEAAAAAAAAAAAAABAAAAWwUAAAUAAgAAAABU
+b0ludDMyAFNUX2E1MzI5ZDhkNzcxMDRiMDc4ZjFiYjIxNWQ0YmI1Mzk4ADxNb2R1bGU+AFN5c3Rl
+bS5JTwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVfXwBTeXN0ZW0uRGF0YQBt
+c2NvcmxpYgBEYkNvbW1hbmQAU3FsQ29tbWFuZABkZWZhdWx0SW5zdGFuY2UAVmFyaWFibGUASURp
+c3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUARmlsZQBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFdyaXRlTGluZQBUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1
+cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFz
+ZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENv
+bXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVi
+dWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0
+dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1
+dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRy
+aWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRy
+aWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50
+QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0
+dHJpYnV0ZQBnZXRfVmFsdWUAc2V0X1ZhbHVlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25p
+bmcAVG9TdHJpbmcATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxT
+ZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBv
+bmVudE1vZGVsAFNUX2E1MzI5ZDhkNzcxMDRiMDc4ZjFiYjIxNWQ0YmI1Mzk4LmRsbABnZXRfSXRl
+bQBTeXN0ZW0ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9u
+AFN5c3RlbS5HbG9iYWxpemF0aW9uAGdldF9UcmFuc2FjdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBB
+Y3F1aXJlQ29ubmVjdGlvbgBTcWxDb25uZWN0aW9uAEV4Y2VwdGlvbgBTeXN0ZW0uRGF0YS5Db21t
+b24AQ3VsdHVyZUluZm8ARXhlY3V0ZVNjYWxhcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAENvbm5lY3Rp
+b25NYW5hZ2VyAFN0cmVhbVdyaXRlcgBUZXh0V3JpdGVyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlh
+Z25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2Vz
+AFNUX2E1MzI5ZDhkNzcxMDRiMDc4ZjFiYjIxNWQ0YmI1Mzk4LlByb3BlcnRpZXMuUmVzb3VyY2Vz
+LnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF9hNTMyOWQ4ZDc3MTA0YjA3OGYxYmIyMTVkNGJi
+NTM5OC5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJsZXMAU2V0dGluZ3MAZ2V0X0Nvbm5lY3Rpb25zAFN1
+Y2Nlc3MAZ2V0X0R0cwBTY3JpcHRSZXN1bHRzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQAc2V0
+X1Rhc2tSZXN1bHQAU3lzdGVtLkRhdGEuU3FsQ2xpZW50AENvbnZlcnQAQ3JlYXRlVGV4dABnZXRf
+QXNzZW1ibHkAABdEAEEATgBOAFkAQwAuAEQAQgBXAFMAAD1TAEUATABFAEMAVAAgAEMATwBVAE4A
+VAAoACoAKQAgAEYAUgBPAE0AIABQAHIAbwB2AGUAZQBkAG8AcgAALVUAcwBlAHIAOgA6AEMAbwBu
+AHQAYQBkAG8AUAByAG8AdgBlAGUAZABvAHIAADtTAEUATABFAEMAVAAgAEMATwBVAE4AVAAoACoA
+KQAgAEYAUgBPAE0AIABTAHUAYwB1AHIAcwBhAGwAACtVAHMAZQByADoAOgBDAG8AbgB0AGEAZABv
+AFMAdQBjAHUAcgBzAGEAbAAAO1MARQBMAEUAQwBUACAAQwBPAFUATgBUACgAKgApACAARgBSAE8A
+TQAgAFAAcgBvAGQAdQBjAHQAbwAAK1UAcwBlAHIAOgA6AEMAbwBuAHQAYQBkAG8AUAByAG8AZAB1
+AGMAdABvAAA1UwBFAEwARQBDAFQAIABDAE8AVQBOAFQAKAAqACkAIABGAFIATwBNACAARgBlAGMA
+aABhAAAlVQBzAGUAcgA6ADoAQwBvAG4AdABhAGQAbwBGAGUAYwBoAGEAADlTAEUATABFAEMAVAAg
+AEMATwBVAE4AVAAoACoAKQAgAEYAUgBPAE0AIABDAGwAaQBlAG4AdABlAAApVQBzAGUAcgA6ADoA
+QwBvAG4AdABhAGQAbwBDAGwAaQBlAG4AdABlAAA7UwBFAEwARQBDAFQAIABDAE8AVQBOAFQAKAAq
+ACkAIABGAFIATwBNACAAVgBlAG4AZABlAGQAbwByAAArVQBzAGUAcgA6ADoAQwBvAG4AdABhAGQA
+bwBWAGUAbgBkAGUAZABvAHIAADlTAEUATABFAEMAVAAgAEMATwBVAE4AVAAoACoAKQAgAEYAUgBP
+AE0AIABDAG8AbQBwAHIAYQBzAAApVQBzAGUAcgA6ADoAQwBvAG4AdABhAGQAbwBDAG8AbQBwAHIA
+YQBzAAA3UwBFAEwARQBDAFQAIABDAE8AVQBOAFQAKAAqACkAIABGAFIATwBNACAAVgBlAG4AdABh
+AHMAACdVAHMAZQByADoAOgBDAG8AbgB0AGEAZABvAFYAZQBuAHQAYQBzAAAjVQBzAGUAcgA6ADoA
+RgBvAGwAZABlAHIARQByAHIAbwByAAAbXABFAHIAcgBvAHIATABvAGcALgBsAG8AZwAAcVMAVABf
+AGEANQAzADIAOQBkADgAZAA3ADcAMQAwADQAYgAwADcAOABmADEAYgBiADIAMQA1AGQANABiAGIA
+NQAzADkAOAAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAmufPOA
+m2BMiqwrwR39+kAABCABAQgDIAABBSABARERBCABAQ4FIAEBEWEoBxsSPRJBHAgSQRwIEkEcCBJB
+HAgSQRwIEkEcCBJBHAgSQRwIEkkSTQQgABJxBCAAEnUFIAESeRwDIAAcBCABHBwGIAIBDhI9BAAB
+CBwFIAASgIUGIAESgIkcBCABARwDIAAOBQACDg4OBQABEk0OCAABEoChEYClBSAAEoCpByACAQ4S
+gKkIt3pcVhk04IkIiYRdzYCAzJEEAAAAAAQBAAAAAwYSWQMGEl0DBhIQAgYIAwYRFAQAABJZBAAA
+El0FAAEBEl0EAAASEAMAAAEECAASWQQIABJdBAgAEhAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25F
+eGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUX2E1MzI5ZDhkNzcxMDRiMDc4ZjFiYjIxNWQ0
+YmI1Mzk4AAAFAQAAAAAMAQAHSFAgSW5jLgAAHQEAGENvcHlyaWdodCBAIEhQIEluYy4gMjAyNAAA
+SQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIu
+TkVUIEZyYW1ld29yayA0LjcAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNv
+dXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
+dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJl
+c291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAAcOAAAAAAAAAAAAAA2OAAAACAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAKDgAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA
+/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAAA2BAAAAAAAAAAAAAA2BDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAN5eEIgAAAQA3l4QiPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAElgMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAcgMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAADAACAABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAASABQACAASQBuAGMALgAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0
+AGkAbwBuAAAAAABTAFQAXwBhADUAMwAyADkAZAA4AGQANwA3ADEAMAA0AGIAMAA3ADgAZgAxAGIA
+YgAyADEANQBkADQAYgBiADUAMwA5ADgAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAA
+ADEALgAwAC4AOAA4ADMANgAuADMAOAA3ADEAMQAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4A
+YQBtAGUAAABTAFQAXwBhADUAMwAyADkAZAA4AGQANwA3ADEAMAA0AGIAMAA3ADgAZgAxAGIAYgAy
+ADEANQBkADQAYgBiADUAMwA5ADgALgBkAGwAbAAAAFYAGQABAEwAZQBnAGEAbABDAG8AcAB5AHIA
+aQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgAEgAUAAgAEkAbgBjAC4AIAAyADAAMgA0
+AAAAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8A
+cgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwBhADUAMwAyADkAZAA4AGQANwA3
+ADEAMAA0AGIAMAA3ADgAZgAxAGIAYgAyADEANQBkADQAYgBiADUAMwA5ADgALgBkAGwAbAAAAGgA
+JAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8AYQA1ADMAMgA5AGQAOABkADcANwAx
+ADAANABiADAANwA4AGYAMQBiAGIAMgAxADUAZAA0AGIAYgA1ADMAOQA4AAAAQgAPAAEAUAByAG8A
+ZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA4ADgAMwA2AC4AMwA4ADcAMQAxAAAAAABG
+AA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA4ADgAMwA2AC4A
+MwA4ADcAMQAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAASDgAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Tarea ScriptBD1"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Tarea ScriptBD1"
@@ -51331,6 +52252,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 6"
       DTS:To="Package\Tarea Ejecutar BDP1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{694BF9B1-C162-43E5-AD5E-4E4BE7361C0F}"
+      DTS:From="Package\TblasHechos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 7"
+      DTS:To="Package\Tarea Script" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -51566,6 +52495,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,28.8647069869982" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Tarea Script"
+          TopLeft="323.571434081817,605.435299029565" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 7]"
+          TopLeft="393.200005534717,533.200005469602">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.2352935599625"
+              Start="0,0"
+              End="0,64.7352935599625">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.7352935599625" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -53347,7 +54302,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\TblasHechos\Flat File Source 1"
-          TopLeft="1253.10205160772,62.9971997630637" />
+          TopLeft="2404.76871827439,70.1638664297303" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\OrigenADONETP2_C"
@@ -53355,11 +54310,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\OrigenADONETP2_V"
-          TopLeft="1014.2857315589,63.4068636343553" />
+          TopLeft="2165.95239822557,70.5735303010219" />
         <NodeLayout
           Size="155.2,41.6"
           Id="Package\TblasHechos\Data Conversion"
-          TopLeft="1076.32144495257,394.676475092614" />
+          TopLeft="2227.98811161924,401.843141759281" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\TblasHechos\Data Conversion 2"
@@ -53375,7 +54330,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\TblasHechos\Union All 1"
-          TopLeft="950.630966151855,198.186277289291" />
+          TopLeft="2102.29763281852,205.352943955958" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\TblasHechos\Union All"
@@ -53387,15 +54342,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\TblasHechos\Union All 2"
-          TopLeft="1089.23811190307,290.588239369508" />
+          TopLeft="2240.90477856974,297.754906036175" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\TblasHechos\Data Conversion 5"
-          TopLeft="1245.27892222279,191.904764596154" />
+          TopLeft="2396.94558888946,199.071431262821" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\OrigenADONETP1_V"
-          TopLeft="818.650807592334,65.1062100634168" />
+          TopLeft="1970.317474259,72.2728767300834" />
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\TblasHechos\Union All 4"
@@ -53436,7 +54391,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Union All Output 12]"
-          TopLeft="1015.43096615185,239.786277289291">
+          TopLeft="2167.09763281852,246.952943955958">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -53470,7 +54425,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Union All Output 11]"
-          TopLeft="1153.97977842782,332.188239369508">
+          TopLeft="2305.64644509449,339.354906036175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -53526,13 +54481,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET3]"
-          TopLeft="909.050807592334,106.706210063417">
+          TopLeft="2060.717474259,113.872876730084">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="86.1134918928549,91.4800672258745"
+              EndConnector="86.1134918928551,91.4800672258745"
               Start="0,0"
-              End="86.1134918928549,83.9800672258745">
+              End="86.1134918928551,83.9800672258745">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -53543,13 +54498,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                     Point2="0,54.2186739899695"
                     Point3="4,54.2186739899695" />
                   <mssgle:LineSegment
-                    End="82.1134918928549,54.2186739899695" />
+                    End="82.1134918928551,54.2186739899695" />
                   <mssgle:CubicBezierSegment
-                    Point1="82.1134918928549,54.2186739899695"
-                    Point2="86.1134918928549,54.2186739899695"
-                    Point3="86.1134918928549,58.2186739899695" />
+                    Point1="82.1134918928551,54.2186739899695"
+                    Point2="86.1134918928551,54.2186739899695"
+                    Point3="86.1134918928551,58.2186739899695" />
                   <mssgle:LineSegment
-                    End="86.1134918928549,83.9800672258745" />
+                    End="86.1134918928551,83.9800672258745" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -53628,7 +54583,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET]"
-          TopLeft="1104.6857315589,105.006863634355">
+          TopLeft="2256.35239822557,112.173530301022">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -53684,7 +54639,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Flat File Source Output]"
-          TopLeft="1330.19048691526,104.597199763064">
+          TopLeft="2481.85715358193,111.763866429731">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -53740,7 +54695,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Data Conversion Output]"
-          TopLeft="1327.67892222279,233.504764596154">
+          TopLeft="2479.34558888946,240.671431262821">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54339,22 +55294,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="216.8,41.6"
           Id="Package\TblasHechos\Destino de ADO NETCompras"
-          TopLeft="826.888888888889,1474.22222222222" />
+          TopLeft="835.638888888889,1344.22222222222" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NETCliente"
-          TopLeft="1306.22222222222,394.444444444444" />
+          TopLeft="2457.88888888889,401.611111111111" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\TblasHechos\Sort 9"
-          TopLeft="1102.88888888889,486.666666666667" />
+          TopLeft="2086.22222222222,498.833333333333" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 10"
-          TopLeft="1336.22222222222,486.666666666667" />
+          TopLeft="2487.88888888889,493.833333333333" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET8]"
-          TopLeft="1394.62222222222,436.044444444444">
+          TopLeft="2546.28888888889,443.211111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54376,18 +55331,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Data Conversion Output4]"
-          TopLeft="1155.00516692073,436.276475092614">
+          TopLeft="2305.58811161924,443.443141759281">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.3901915740525"
+              EndConnector="-166.165889397014,55.3901915740525"
               Start="0,0"
-              End="0,42.8901915740525">
+              End="-166.165889397014,47.8901915740525">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.8901915740525" />
+                    End="0,23.6950957870263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.6950957870263"
+                    Point2="0,27.6950957870263"
+                    Point3="-4,27.6950957870263" />
+                  <mssgle:LineSegment
+                    End="-162.165889397014,27.6950957870263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-162.165889397014,27.6950957870263"
+                    Point2="-166.165889397014,27.6950957870263"
+                    Point3="-166.165889397014,31.6950957870263" />
+                  <mssgle:LineSegment
+                    End="-166.165889397014,47.8901915740525" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54399,33 +55366,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="137.6,41.6"
           Id="Package\TblasHechos\UnionCliente"
-          TopLeft="1213.77777777778,565.555555555556" />
+          TopLeft="2297.11111111111,585.555555555556" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output8]"
-          TopLeft="1156.08888888889,528.266666666667">
+          TopLeft="2139.42222222222,540.433333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.888888888889,37.288888888889"
+              EndConnector="204.888888888889,45.1222222222224"
               Start="0,0"
-              End="104.888888888889,29.788888888889">
+              End="204.888888888889,37.6222222222224">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1161685823755" />
+                    End="0,22.7621455938698" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.1161685823755"
-                    Point2="0,22.1161685823755"
-                    Point3="4,22.1161685823755" />
+                    Point1="0,22.7621455938698"
+                    Point2="0,26.7621455938698"
+                    Point3="4,26.7621455938698" />
                   <mssgle:LineSegment
-                    End="100.888888888889,22.1161685823755" />
+                    End="200.888888888889,26.7621455938698" />
                   <mssgle:CubicBezierSegment
-                    Point1="100.888888888889,22.1161685823755"
-                    Point2="104.888888888889,22.1161685823755"
-                    Point3="104.888888888889,26.1161685823755" />
+                    Point1="200.888888888889,26.7621455938698"
+                    Point2="204.888888888889,26.7621455938698"
+                    Point3="204.888888888889,30.7621455938698" />
                   <mssgle:LineSegment
-                    End="104.888888888889,29.788888888889" />
+                    End="204.888888888889,37.6222222222224" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54436,30 +55403,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output9]"
-          TopLeft="1392.62222222222,528.266666666667">
+          TopLeft="2544.28888888889,535.433333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-88.4444444444443,37.2888888888889"
+              EndConnector="-156.777777777777,50.1222222222223"
               Start="0,0"
-              End="-88.4444444444443,29.7888888888889">
+              End="-156.777777777777,42.6222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1161685823755" />
+                    End="0,25.7276628352491" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.1161685823755"
-                    Point2="0,22.1161685823755"
-                    Point3="-4,22.1161685823755" />
+                    Point1="0,25.7276628352491"
+                    Point2="0,29.7276628352491"
+                    Point3="-4,29.7276628352491" />
                   <mssgle:LineSegment
-                    End="-84.4444444444443,22.1161685823755" />
+                    End="-152.777777777777,29.7276628352491" />
                   <mssgle:CubicBezierSegment
-                    Point1="-84.4444444444443,22.1161685823755"
-                    Point2="-88.4444444444443,22.1161685823755"
-                    Point3="-88.4444444444443,26.1161685823755" />
+                    Point1="-152.777777777777,29.7276628352491"
+                    Point2="-156.777777777777,29.7276628352491"
+                    Point3="-156.777777777777,33.7276628352491" />
                   <mssgle:LineSegment
-                    End="-88.4444444444443,29.7888888888889" />
+                    End="-156.777777777777,42.6222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54471,29 +55438,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NET 4"
-          TopLeft="1453.77777777778,557.555555555555" />
+          TopLeft="2503.77777777778,589.222222222222" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 11"
-          TopLeft="1229.33333333333,629.777777777778" />
+          TopLeft="2313,678.444444444445" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 12"
-          TopLeft="1489.33333333333,646.444444444445" />
+          TopLeft="2537,677.111111111111" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Merge Join Output4]"
-          TopLeft="1284.15555555556,607.155555555556">
+          TopLeft="2367.65555555556,627.155555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,22.6222222222224"
+              EndConnector="0,51.2888888888891"
               Start="0,0"
-              End="0,15.1222222222224">
+              End="0,43.7888888888891">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.1222222222224" />
+                    End="0,43.7888888888891" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54504,18 +55471,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET9]"
-          TopLeft="1544.95555555556,599.155555555555">
+          TopLeft="2593.78888888889,630.822222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47.2888888888892"
+              EndConnector="0,46.2888888888891"
               Start="0,0"
-              End="0,39.7888888888892">
+              End="0,38.7888888888891">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.7888888888892" />
+                    End="0,38.7888888888891" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54527,33 +55494,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="156,41.6"
           Id="Package\TblasHechos\Merge Vendedor"
-          TopLeft="1338,726.444444444444" />
+          TopLeft="2347.16666666667,814.611111111111" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output10]"
-          TopLeft="1285.73333333333,671.377777777778">
+          TopLeft="2369.4,720.044444444445">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105.6,55.0666666666665"
+              EndConnector="31.0999999999995,94.5666666666665"
               Start="0,0"
-              End="105.6,47.5666666666665">
+              End="31.0999999999995,87.0666666666665">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.7045685279187" />
+                    End="0,52.1639593908628" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.7045685279187"
-                    Point2="0,32.7045685279187"
-                    Point3="4,32.7045685279187" />
+                    Point1="0,52.1639593908628"
+                    Point2="0,56.1639593908628"
+                    Point3="4,56.1639593908628" />
                   <mssgle:LineSegment
-                    End="101.6,32.7045685279187" />
+                    End="27.0999999999995,56.1639593908628" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.6,32.7045685279187"
-                    Point2="105.6,32.7045685279187"
-                    Point3="105.6,36.7045685279187" />
+                    Point1="27.0999999999995,56.1639593908628"
+                    Point2="31.0999999999995,56.1639593908628"
+                    Point3="31.0999999999995,60.1639593908628" />
                   <mssgle:LineSegment
-                    End="105.6,47.5666666666665" />
+                    End="31.0999999999995,87.0666666666665" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54564,30 +55531,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output11]"
-          TopLeft="1545.73333333333,688.044444444445">
+          TopLeft="2593.4,718.711111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-105.066666666667,38.3999999999999"
+              EndConnector="-143.566666666667,95.9"
               Start="0,0"
-              End="-105.066666666667,30.8999999999999">
+              End="-143.566666666667,88.4">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.8060913705583" />
+                    End="0,52.9558375634518" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.8060913705583"
-                    Point2="0,22.8060913705583"
-                    Point3="-4,22.8060913705583" />
+                    Point1="0,52.9558375634518"
+                    Point2="0,56.9558375634518"
+                    Point3="-4,56.9558375634518" />
                   <mssgle:LineSegment
-                    End="-101.066666666667,22.8060913705583" />
+                    End="-139.566666666667,56.9558375634518" />
                   <mssgle:CubicBezierSegment
-                    Point1="-101.066666666667,22.8060913705583"
-                    Point2="-105.066666666667,22.8060913705583"
-                    Point3="-105.066666666667,26.8060913705583" />
+                    Point1="-139.566666666667,56.9558375634518"
+                    Point2="-143.566666666667,56.9558375634518"
+                    Point3="-143.566666666667,60.9558375634518" />
                   <mssgle:LineSegment
-                    End="-105.066666666667,30.8999999999999" />
+                    End="-143.566666666667,88.4" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54599,29 +55566,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NET 5"
-          TopLeft="1629.55555555556,731.333333333333" />
+          TopLeft="2538.72222222222,812" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 13"
-          TopLeft="1351.77777777778,802.888888888889" />
+          TopLeft="2183.44444444444,893.555555555555" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 14"
-          TopLeft="1669.55555555556,804" />
+          TopLeft="2566.22222222222,892.166666666666" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET10]"
-          TopLeft="1722.95555555556,772.933333333333">
+          TopLeft="2625.87222222222,853.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.0666666666666"
+              EndConnector="0,38.5666666666665"
               Start="0,0"
-              End="0,23.5666666666666">
+              End="0,31.0666666666665">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5666666666666" />
+                    End="0,31.0666666666665" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54632,18 +55599,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Merge Join Output5]"
-          TopLeft="1412.08888888889,768.044444444444">
+          TopLeft="2425.16666666667,856.211111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.8444444444442"
+              EndConnector="-185.322222222223,37.3444444444441"
               Start="0,0"
-              End="0,27.3444444444442">
+              End="-185.322222222223,29.8444444444441">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.3444444444442" />
+                    End="0,14.6722222222221" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6722222222221"
+                    Point2="0,18.6722222222221"
+                    Point3="-4,18.6722222222221" />
+                  <mssgle:LineSegment
+                    End="-181.322222222223,18.6722222222221" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-181.322222222223,18.6722222222221"
+                    Point2="-185.322222222223,18.6722222222221"
+                    Point3="-185.322222222223,22.6722222222221" />
+                  <mssgle:LineSegment
+                    End="-185.322222222223,29.8444444444441" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54655,10 +55634,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\TblasHechos\Merge Producto"
-          TopLeft="1486.22222222222,880.222222222222" />
+          TopLeft="2317.88888888889,970.888888888889" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output12]"
-          TopLeft="1408.17777777778,844.488888888889">
+          TopLeft="2239.84444444444,935.155555555555">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54692,30 +55671,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output13]"
-          TopLeft="1725.95555555556,845.6">
+          TopLeft="2622.62222222222,933.766666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-139.199999999999,34.6222222222223"
+              EndConnector="-204.199999999999,37.1222222222224"
               Start="0,0"
-              End="-139.199999999999,27.1222222222223">
+              End="-204.199999999999,29.6222222222224">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5580656303972" />
+                    End="0,18.0425215889466" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.5580656303972"
-                    Point2="0,20.5580656303972"
-                    Point3="-4,20.5580656303972" />
+                    Point1="0,18.0425215889466"
+                    Point2="0,22.0425215889466"
+                    Point3="-4,22.0425215889466" />
                   <mssgle:LineSegment
-                    End="-135.199999999999,20.5580656303972" />
+                    End="-200.199999999999,22.0425215889466" />
                   <mssgle:CubicBezierSegment
-                    Point1="-135.199999999999,20.5580656303972"
-                    Point2="-139.199999999999,20.5580656303972"
-                    Point3="-139.199999999999,24.5580656303972" />
+                    Point1="-200.199999999999,22.0425215889466"
+                    Point2="-204.199999999999,22.0425215889466"
+                    Point3="-204.199999999999,26.0425215889466" />
                   <mssgle:LineSegment
-                    End="-139.199999999999,27.1222222222223" />
+                    End="-204.199999999999,29.6222222222224" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54727,29 +55706,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NET 6"
-          TopLeft="1812.88888888889,883.555555555555" />
+          TopLeft="2644.55555555556,974.222222222222" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 15"
-          TopLeft="1509.33333333333,980.222222222222" />
+          TopLeft="2341,1070.88888888889" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 16"
-          TopLeft="1846,971.333333333333" />
+          TopLeft="2677.66666666667,1062" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Merge Join Output6]"
-          TopLeft="1564.17777777778,921.822222222222">
+          TopLeft="2395.84444444444,1012.48888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.3999999999999"
+              EndConnector="0,58.4"
               Start="0,0"
-              End="0,50.8999999999999">
+              End="0,50.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.8999999999999" />
+                    End="0,50.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54760,18 +55739,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET11]"
-          TopLeft="1902.84444444444,925.155555555555">
+          TopLeft="2734.51111111111,1015.82222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46.1777777777777"
+              EndConnector="0,46.1777777777776"
               Start="0,0"
-              End="0,38.6777777777777">
+              End="0,38.6777777777776">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.6777777777777" />
+                    End="0,38.6777777777776" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54783,10 +55762,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\TblasHechos\Merge Sucursal"
-          TopLeft="1689.33333333333,1074" />
+          TopLeft="2521,1164.66666666667" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output14]"
-          TopLeft="1565.73333333333,1021.82222222222">
+          TopLeft="2397.4,1112.48888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54797,17 +55776,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.0888888888888" />
+                    End="0,22.088888888889" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.0888888888888"
-                    Point2="0,26.0888888888888"
-                    Point3="4,26.0888888888888" />
+                    Point1="0,22.088888888889"
+                    Point2="0,26.088888888889"
+                    Point3="4,26.088888888889" />
                   <mssgle:LineSegment
-                    End="194.8,26.0888888888888" />
+                    End="194.8,26.088888888889" />
                   <mssgle:CubicBezierSegment
-                    Point1="194.8,26.0888888888888"
-                    Point2="198.8,26.0888888888888"
-                    Point3="198.8,30.0888888888888" />
+                    Point1="194.8,26.088888888889"
+                    Point2="198.8,26.088888888889"
+                    Point3="198.8,30.088888888889" />
                   <mssgle:LineSegment
                     End="198.8,44.6777777777777" />
                 </mssgle:SegmentCollection>
@@ -54820,7 +55799,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output15]"
-          TopLeft="1902.4,1012.93333333333">
+          TopLeft="2734.06666666667,1103.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54831,17 +55810,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.2543157894737" />
+                    End="0,32.2543157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.2543157894737"
-                    Point2="0,36.2543157894737"
-                    Point3="-4,36.2543157894737" />
+                    Point1="0,32.2543157894736"
+                    Point2="0,36.2543157894736"
+                    Point3="-4,36.2543157894736" />
                   <mssgle:LineSegment
-                    End="-110.133333333333,36.2543157894737" />
+                    End="-110.133333333333,36.2543157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="-110.133333333333,36.2543157894737"
-                    Point2="-114.133333333333,36.2543157894737"
-                    Point3="-114.133333333333,40.2543157894737" />
+                    Point1="-110.133333333333,36.2543157894736"
+                    Point2="-114.133333333333,36.2543157894736"
+                    Point3="-114.133333333333,40.2543157894736" />
                   <mssgle:LineSegment
                     End="-114.133333333333,53.5666666666666" />
                 </mssgle:SegmentCollection>
@@ -54855,14 +55834,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NET 7"
-          TopLeft="2047.77777777778,1063.33333333333" />
+          TopLeft="2879.44444444444,1154" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\TblasHechos\Data Conversion 3"
-          TopLeft="2046.22222222222,1153.33333333333" />
+          TopLeft="2877.88888888889,1244" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Salida de origen de ADO NET12]"
-          TopLeft="2138.17777777778,1104.93333333333">
+          TopLeft="2969.84444444444,1195.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54873,17 +55852,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2000000000002" />
+                    End="0,20.2000000000003" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2000000000002"
-                    Point2="0,24.2000000000002"
-                    Point3="-4,24.2000000000002" />
+                    Point1="0,20.2000000000003"
+                    Point2="0,24.2000000000003"
+                    Point3="-4,24.2000000000003" />
                   <mssgle:LineSegment
-                    End="-5.5555555555552,24.2000000000002" />
+                    End="-5.5555555555552,24.2000000000003" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.5555555555552,24.2000000000002"
-                    Point2="-9.5555555555552,24.2000000000002"
-                    Point3="-9.5555555555552,28.2000000000002" />
+                    Point1="-5.5555555555552,24.2000000000003"
+                    Point2="-9.5555555555552,24.2000000000003"
+                    Point3="-9.5555555555552,28.2000000000003" />
                   <mssgle:LineSegment
                     End="-9.5555555555552,40.9000000000003" />
                 </mssgle:SegmentCollection>
@@ -54897,10 +55876,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 17"
-          TopLeft="2069.33333333333,1237.55555555556" />
+          TopLeft="2901,1328.22222222222" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Data Conversion Output5]"
-          TopLeft="2127.17777777778,1194.93333333333">
+          TopLeft="2958.84444444444,1285.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54923,10 +55902,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 18"
-          TopLeft="1701.55555555556,1236.44444444444" />
+          TopLeft="2533.22222222222,1327.11111111111" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Merge Join Output7]"
-          TopLeft="1761.24444444444,1115.6">
+          TopLeft="2592.91111111111,1206.26666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54949,10 +55928,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="138.4,41.6"
           Id="Package\TblasHechos\Merge Join 2"
-          TopLeft="1862.66666666667,1343.11111111111" />
+          TopLeft="2694.33333333333,1433.77777777778" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output16]"
-          TopLeft="1757.95555555556,1278.04444444444">
+          TopLeft="2589.62222222222,1368.71111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -54986,7 +55965,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output17]"
-          TopLeft="2125.73333333333,1279.15555555556">
+          TopLeft="2957.4,1369.82222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -55021,11 +56000,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="176,41.6"
           Id="Package\TblasHechos\Destino de ADO NET"
-          TopLeft="1839.21212121212,1587.41414141414" />
+          TopLeft="2670.87878787879,1678.08080808081" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 19"
-          TopLeft="1870.22222222222,1428.22222222222" />
+          TopLeft="2701.88888888889,1518.88888888889" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\TblasHechos\Derived Column"
@@ -55081,70 +56060,56 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 20"
-          TopLeft="878.222222222222,1329.33333333333" />
+          TopLeft="420.722222222222,1350.58333333333" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[NotNull]"
-          TopLeft="482.088888888889,1288.71111111111">
+          TopLeft="479.605555555555,1288.71111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="452.533333333333,40.622222222222"
+              EndConnector="0,61.872222222222"
               Start="0,0"
-              End="452.533333333333,33.122222222222">
+              End="0,54.372222222222">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.311111111111" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.311111111111"
-                    Point2="0,20.311111111111"
-                    Point3="4,20.311111111111" />
-                  <mssgle:LineSegment
-                    End="448.533333333333,20.311111111111" />
-                  <mssgle:CubicBezierSegment
-                    Point1="448.533333333333,20.311111111111"
-                    Point2="452.533333333333,20.311111111111"
-                    Point3="452.533333333333,24.311111111111" />
-                  <mssgle:LineSegment
-                    End="452.533333333333,33.122222222222" />
+                    End="0,54.372222222222" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="209.844537760417,25.311111111111,32.8442578125,9.7490234375"
+              BoundingBox="-16.42212890625,22.311599392361,32.8442578125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output19]"
-          TopLeft="934.955555555556,1370.93333333333">
+          TopLeft="533.522222222222,1368.20277777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,103.288888888889"
+              EndConnector="302.116666666667,0"
               Start="0,0"
-              End="0,95.788888888889">
+              End="294.616666666667,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,95.788888888889" />
+                    End="294.616666666667,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,39.8944444444445,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Merge Join Output8]"
-          TopLeft="1929.24444444444,1384.71111111111">
+          TopLeft="2760.91111111111,1475.37777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -55167,21 +56132,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\TblasHechos\Derived Column 1"
-          TopLeft="1652.66666666667,1423.33333333333" />
+          TopLeft="2484.33333333333,1514" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output20]"
-          TopLeft="1870.22222222222,1446.57777777778">
+          TopLeft="2701.88888888889,1537.24444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-55.1555555555558,0"
+              EndConnector="-55.1555555555556,0"
               Start="0,0"
-              End="-47.6555555555558,0">
+              End="-47.6555555555556,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-47.6555555555558,0" />
+                    End="-47.6555555555556,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -55193,10 +56158,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\TblasHechos\Conditional Split 1"
-          TopLeft="1451.27272727273,1424" />
+          TopLeft="2282.93939393939,1514.66666666667" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Derived Column Output1]"
-          TopLeft="1652.66666666667,1444.46666666667">
+          TopLeft="2484.33333333333,1535.13333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -55219,10 +56184,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 21"
-          TopLeft="1872.18181818182,1499.09090909091" />
+          TopLeft="2703.84848484849,1589.75757575758" />
         <EdgeLayout
           Id="Package\TblasHechos.Paths[NotNull1]"
-          TopLeft="1532.87272727273,1465.6">
+          TopLeft="2364.53939393939,1556.26666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -55233,17 +56198,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.7454545454547" />
+                    End="0,12.7454545454548" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.7454545454547"
-                    Point2="0,16.7454545454547"
-                    Point3="4,16.7454545454547" />
+                    Point1="0,12.7454545454548"
+                    Point2="0,16.7454545454548"
+                    Point3="4,16.7454545454548" />
                   <mssgle:LineSegment
-                    End="391.709090909091,16.7454545454547" />
+                    End="391.709090909091,16.7454545454548" />
                   <mssgle:CubicBezierSegment
-                    Point1="391.709090909091,16.7454545454547"
-                    Point2="395.709090909091,16.7454545454547"
-                    Point3="395.709090909091,20.7454545454547" />
+                    Point1="391.709090909091,16.7454545454548"
+                    Point2="395.709090909091,16.7454545454548"
+                    Point3="395.709090909091,20.7454545454548" />
                   <mssgle:LineSegment
                     End="395.709090909091,25.9909090909093" />
                 </mssgle:SegmentCollection>
@@ -55252,13 +56217,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="181.432416548296,21.7454545454547,32.8442578125,9.7490234375"
+              BoundingBox="181.432416548296,21.7454545454548,32.8442578125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TblasHechos.Paths[Sort Output21]"
-          TopLeft="1927.89696969697,1540.69090909091">
+          TopLeft="2759.56363636364,1631.35757575758">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
