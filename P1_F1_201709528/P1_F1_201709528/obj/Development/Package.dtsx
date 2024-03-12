@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{873618F1-490C-449E-8F15-71E7F003889F}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{947BFE4B-6AE4-4A41-B60E-2904793837BB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32306,6 +32306,254 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           version="1">
           <components>
             <component
+              refId="Package\TblasHechos\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input].Columns[Der_Costo]"
+                      cachedDataType="r4"
+                      cachedName="Der_Costo"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Conditional Split.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Der_Unidades)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split.Outputs[Case 2]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 2"
+                  synchronousInputId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Der_Costo)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split.Outputs[NotNull]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="NotNull"
+                  synchronousInputId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TblasHechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TblasHechos\Conditional Split 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input].Columns[Der_Precio]"
+                      cachedDataType="r4"
+                      cachedName="Der_Precio"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Conditional Split 1.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Der_Unidades)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split 1.Outputs[Case 2]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 2"
+                  synchronousInputId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Der_Precio)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split 1.Outputs[NotNull]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="NotNull"
+                  synchronousInputId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Conditional Split 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TblasHechos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\TblasHechos\Data Conversion"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -34707,6 +34955,228 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               </outputs>
             </component>
             <component
+              refId="Package\TblasHechos\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input].Columns[UNITS]"
+                      cachedDataType="i4"
+                      cachedName="UNITS"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input].Columns[COSTOU]"
+                      cachedDataType="r4"
+                      cachedName="COSTOU"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]"
+                      name="Der_Unidades"
+                      precision="15"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]} &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : #{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UNITS &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : UNITS</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]"
+                      name="Der_Costo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]} &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : #{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">COSTOU &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : COSTOU</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TblasHechos\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input].Columns[UNITS]"
+                      cachedDataType="i4"
+                      cachedName="UNITS"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input].Columns[PRECIOUNITS]"
+                      cachedDataType="r4"
+                      cachedName="PRECIOUNITS"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]"
+                      name="Der_Unidades"
+                      precision="15"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]} &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : #{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UNITS &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : UNITS</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]"
+                      name="Der_Precio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]} &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : #{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">PRECIOUNITS &lt;= 0 ? (DT_NUMERIC,15,3)NULL(DT_NUMERIC,15,3) : PRECIOUNITS</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\TblasHechos\Destino de ADO NET"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
@@ -34756,58 +35226,60 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[UNITS]"
-                      cachedDataType="i4"
-                      cachedName="UNITS"
-                      cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Units]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]" />
-                    <inputColumn
-                      refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PRECIOUNITS]"
-                      cachedDataType="r4"
-                      cachedName="PRECIOUNITS"
-                      cachedSortKeyPosition="2"
-                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PrecioUnits]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]" />
-                    <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CodVendedor]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="CodVendedor"
-                      cachedSortKeyPosition="4"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodVendedor]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodVendedor]" />
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodVendedor]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CodProducto]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CodProducto"
-                      cachedSortKeyPosition="5"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodProducto]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodProducto]" />
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodProducto]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SodSuSursal]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="SodSuSursal"
-                      cachedSortKeyPosition="6"
+                      cachedSortKeyPosition="4"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SodSuSursal]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[SodSuSursal]" />
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[SodSuSursal]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CodigoCliente]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="CodigoCliente"
-                      cachedSortKeyPosition="3"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodCliente]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodigoCliente]" />
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodigoCliente]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ID]"
                       cachedDataType="i4"
                       cachedName="ID"
-                      cachedSortKeyPosition="7"
+                      cachedSortKeyPosition="5"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Codfecha]"
-                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[ID]" />
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      cachedSortKeyPosition="6"
+                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Units]"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Unidades]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Der_Precio]"
+                      cachedDataType="r4"
+                      cachedName="Der_Precio"
+                      cachedSortKeyPosition="7"
+                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PrecioUnits]"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Precio]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -34927,50 +35399,52 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[UNITS]"
-                      cachedDataType="i4"
-                      cachedName="UNITS"
-                      cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[Units]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]" />
-                    <inputColumn
-                      refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[COSTOU]"
-                      cachedDataType="r4"
-                      cachedName="COSTOU"
-                      cachedSortKeyPosition="2"
-                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[CostoU]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]" />
-                    <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[CodProveedor]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="CodProveedor"
-                      cachedSortKeyPosition="3"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodProveedor]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProveedor]" />
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProveedor]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[CodProducto]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CodProducto"
-                      cachedSortKeyPosition="4"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodProducto]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProducto]" />
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProducto]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[SodSuSursal]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="SodSuSursal"
-                      cachedSortKeyPosition="5"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[SodSuSursal]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[SodSuSursal]" />
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[SodSuSursal]" />
                     <inputColumn
                       refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[CID]"
                       cachedDataType="i4"
                       cachedName="CID"
-                      cachedSortKeyPosition="6"
+                      cachedSortKeyPosition="4"
                       externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[Codfecha]"
-                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CID]" />
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CID]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      cachedSortKeyPosition="5"
+                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[Units]"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Unidades]" />
+                    <inputColumn
+                      refId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].Columns[Der_Costo]"
+                      cachedDataType="r4"
+                      cachedName="Der_Costo"
+                      cachedSortKeyPosition="6"
+                      externalMetadataColumnId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET].ExternalColumns[CostoU]"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Costo]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -44141,6 +44615,623 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               </outputs>
             </component>
             <component
+              refId="Package\TblasHechos\Sort 20"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 20"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Sort 20.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[UNITS]"
+                      cachedDataType="i4"
+                      cachedName="UNITS"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[COSTOU]"
+                      cachedDataType="r4"
+                      cachedName="COSTOU"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[CodProveedor]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CodProveedor"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProveedor]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[CodProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CodProducto"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[SodSuSursal]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="SodSuSursal"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[SodSuSursal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[CID]"
+                      cachedDataType="i4"
+                      cachedName="CID"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 20.Inputs[Sort Input].Columns[Der_Costo]"
+                      cachedDataType="r4"
+                      cachedName="Der_Costo"
+                      lineageId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Sort 20.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[UNITS]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[UNITS]"
+                      name="UNITS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[UNITS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[COSTOU]"
+                      dataType="r4"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[COSTOU]"
+                      name="COSTOU">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[COSTOU]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProveedor]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProveedor]"
+                      name="CodProveedor"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProveedor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProducto]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CodProducto]"
+                      name="CodProducto"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CodProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[SodSuSursal]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[SodSuSursal]"
+                      name="SodSuSursal"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[SodSuSursal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CID]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[CID]"
+                      name="CID"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 8.Outputs[Sort Output].Columns[CID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Unidades]"
+                      dataType="numeric"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Unidades]"
+                      name="Der_Unidades"
+                      precision="15"
+                      scale="3"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Unidades]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Costo]"
+                      dataType="r4"
+                      lineageId="Package\TblasHechos\Sort 20.Outputs[Sort Output].Columns[Der_Costo]"
+                      name="Der_Costo"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Derived Column.Outputs[Derived Column Output].Columns[Der_Costo]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TblasHechos\Sort 21"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 21"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TblasHechos\Sort 21.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[UNITS]"
+                      cachedDataType="i4"
+                      cachedName="UNITS"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[PRECIOUNITS]"
+                      cachedDataType="r4"
+                      cachedName="PRECIOUNITS"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[CodigoCliente]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CodigoCliente"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodigoCliente]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[CodVendedor]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CodVendedor"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodVendedor]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[CodProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CodProducto"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[SodSuSursal]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="SodSuSursal"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[SodSuSursal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      cachedSortKeyPosition="7"
+                      lineageId="Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[Der_Unidades]"
+                      cachedDataType="numeric"
+                      cachedName="Der_Unidades"
+                      cachedPrecision="15"
+                      cachedScale="3"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TblasHechos\Sort 21.Inputs[Sort Input].Columns[Der_Precio]"
+                      cachedDataType="r4"
+                      cachedName="Der_Precio"
+                      lineageId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TblasHechos\Sort 21.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[UNITS]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[UNITS]"
+                      name="UNITS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[UNITS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[PRECIOUNITS]"
+                      dataType="r4"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[PRECIOUNITS]"
+                      name="PRECIOUNITS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[PRECIOUNITS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodigoCliente]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodigoCliente]"
+                      name="CodigoCliente"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodigoCliente]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodVendedor]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodVendedor]"
+                      name="CodVendedor"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodVendedor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodProducto]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[CodProducto]"
+                      name="CodProducto"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[CodProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[SodSuSursal]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[SodSuSursal]"
+                      name="SodSuSursal"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[SodSuSursal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[ID]"
+                      name="ID"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Sort 19.Outputs[Sort Output].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Unidades]"
+                      dataType="numeric"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Unidades]"
+                      name="Der_Unidades"
+                      precision="15"
+                      scale="3"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Unidades]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Precio]"
+                      dataType="r4"
+                      lineageId="Package\TblasHechos\Sort 21.Outputs[Sort Output].Columns[Der_Precio]"
+                      name="Der_Precio"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output].Columns[Der_Precio]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\TblasHechos\Sort 3"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -49885,154 +50976,189 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               startId="Package\TblasHechos\Data Conversion 5.Outputs[Data Conversion Output]" />
             <path
               refId="Package\TblasHechos.Paths[Data Conversion Output1]"
-              endId="Package\TblasHechos\Sort 17.Inputs[Sort Input]"
+              endId="Package\TblasHechos\Sort 7.Inputs[Sort Input]"
               name="Data Conversion Output"
-              startId="Package\TblasHechos\Data Conversion 3.Outputs[Data Conversion Output]" />
+              startId="Package\TblasHechos\Data Conversion 1.Outputs[Data Conversion Output]" />
             <path
               refId="Package\TblasHechos.Paths[Data Conversion Output2]"
-              endId="Package\TblasHechos\Sort 9.Inputs[Sort Input]"
-              name="Data Conversion Output"
-              startId="Package\TblasHechos\Data Conversion.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Data Conversion Output3]"
               endId="Package\TblasHechos\Sort.Inputs[Sort Input]"
               name="Data Conversion Output"
               startId="Package\TblasHechos\Data Conversion 2.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Data Conversion Output4]"
-              endId="Package\TblasHechos\Sort 7.Inputs[Sort Input]"
+              refId="Package\TblasHechos.Paths[Data Conversion Output3]"
+              endId="Package\TblasHechos\Sort 9.Inputs[Sort Input]"
               name="Data Conversion Output"
-              startId="Package\TblasHechos\Data Conversion 1.Outputs[Data Conversion Output]" />
+              startId="Package\TblasHechos\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Data Conversion Output4]"
+              endId="Package\TblasHechos\Sort 17.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\TblasHechos\Data Conversion 3.Outputs[Data Conversion Output]" />
             <path
               refId="Package\TblasHechos.Paths[Data Conversion Output5]"
               endId="Package\TblasHechos\Union All 4.Inputs[Union All Input 2]"
               name="Data Conversion Output"
               startId="Package\TblasHechos\Data Conversion 4.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Flat File Source Output]"
-              endId="Package\TblasHechos\Data Conversion 5.Inputs[Data Conversion Input]"
-              name="Flat File Source Output"
-              startId="Package\TblasHechos\Flat File Source 1.Outputs[Flat File Source Output]" />
+              refId="Package\TblasHechos.Paths[Derived Column Output]"
+              endId="Package\TblasHechos\Conditional Split.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\TblasHechos\Derived Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Flat File Source Output1]"
+              refId="Package\TblasHechos.Paths[Derived Column Output1]"
+              endId="Package\TblasHechos\Conditional Split 1.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\TblasHechos\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Flat File Source Output]"
               endId="Package\TblasHechos\Data Conversion 4.Inputs[Data Conversion Input]"
               name="Flat File Source Output"
               startId="Package\TblasHechos\Flat File Source.Outputs[Flat File Source Output]" />
             <path
+              refId="Package\TblasHechos.Paths[Flat File Source Output1]"
+              endId="Package\TblasHechos\Data Conversion 5.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\TblasHechos\Flat File Source 1.Outputs[Flat File Source Output]" />
+            <path
               refId="Package\TblasHechos.Paths[Merge Join Output8]"
-              endId="Package\TblasHechos\Sort 18.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Merge Sucursal.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output7]"
-              endId="Package\TblasHechos\Sort 15.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Merge Producto.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output6]"
-              endId="Package\TblasHechos\Sort 13.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Merge Vendedor.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output5]"
-              endId="Package\TblasHechos\Sort 6.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Sucursal.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output3]"
               endId="Package\TblasHechos\Sort 3.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\TblasHechos\UnionProveedor.Outputs[Merge Join Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Merge Join Output2]"
-              endId="Package\TblasHechos\Sort 4.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Merge Join.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output1]"
-              endId="Package\TblasHechos\Sort 19.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\TblasHechos\Merge Join 2.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Merge Join Output]"
+              refId="Package\TblasHechos.Paths[Merge Join Output7]"
               endId="Package\TblasHechos\Sort 8.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\TblasHechos\Merge Join 1.Outputs[Merge Join Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Merge Join Output4]"
+              refId="Package\TblasHechos.Paths[Merge Join Output6]"
+              endId="Package\TblasHechos\Sort 4.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Merge Join Output5]"
               endId="Package\TblasHechos\Sort 11.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\TblasHechos\UnionCliente.Outputs[Merge Join Output]" />
             <path
+              refId="Package\TblasHechos.Paths[Merge Join Output3]"
+              endId="Package\TblasHechos\Sort 15.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Merge Producto.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Merge Join Output2]"
+              endId="Package\TblasHechos\Sort 6.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Sucursal.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Merge Join Output1]"
+              endId="Package\TblasHechos\Sort 18.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Merge Sucursal.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Merge Join Output]"
+              endId="Package\TblasHechos\Sort 19.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Merge Join 2.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Merge Join Output4]"
+              endId="Package\TblasHechos\Sort 13.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\TblasHechos\Merge Vendedor.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[NotNull]"
+              endId="Package\TblasHechos\Sort 21.Inputs[Sort Input]"
+              name="NotNull"
+              startId="Package\TblasHechos\Conditional Split 1.Outputs[NotNull]" />
+            <path
+              refId="Package\TblasHechos.Paths[NotNull1]"
+              endId="Package\TblasHechos\Sort 20.Inputs[Sort Input]"
+              name="NotNull"
+              startId="Package\TblasHechos\Conditional Split.Outputs[NotNull]" />
+            <path
               refId="Package\TblasHechos.Paths[Salida de origen de ADO NET7]"
-              endId="Package\TblasHechos\Union All.Inputs[Union All Input 2]"
+              endId="Package\TblasHechos\Data Conversion 1.Inputs[Data Conversion Input]"
               name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\OrigenADONETP2_C.Outputs[Salida de origen de ADO NET]" />
+              startId="Package\TblasHechos\Origen de ADO NET 3.Outputs[Salida de origen de ADO NET]" />
             <path
               refId="Package\TblasHechos.Paths[Salida de origen de ADO NET12]"
-              endId="Package\TblasHechos\Sort 2.Inputs[Sort Input]"
+              endId="Package\TblasHechos\Sort 16.Inputs[Sort Input]"
               name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET 1.Outputs[Salida de origen de ADO NET]" />
+              startId="Package\TblasHechos\Origen de ADO NET 6.Outputs[Salida de origen de ADO NET]" />
             <path
               refId="Package\TblasHechos.Paths[Salida de origen de ADO NET11]"
-              endId="Package\TblasHechos\Union All 1.Inputs[Union All Input 1]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\OrigenADONETP1_V.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET10]"
               endId="Package\TblasHechos\Union All.Inputs[Union All Input 1]"
               name="Salida de origen de ADO NET"
               startId="Package\TblasHechos\OrigenADONETP1_C.Outputs[Salida de origen de ADO NET]" />
             <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET8]"
-              endId="Package\TblasHechos\Sort 1.Inputs[Sort Input]"
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET10]"
+              endId="Package\TblasHechos\Union All 1.Inputs[Union All Input 2]"
               name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET6]"
-              endId="Package\TblasHechos\Sort 12.Inputs[Sort Input]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET 4.Outputs[Salida de origen de ADO NET]" />
+              startId="Package\TblasHechos\OrigenADONETP2_V.Outputs[Salida de origen de ADO NET]" />
             <path
               refId="Package\TblasHechos.Paths[Salida de origen de ADO NET9]"
               endId="Package\TblasHechos\Sort 5.Inputs[Sort Input]"
               name="Salida de origen de ADO NET"
               startId="Package\TblasHechos\Origen de ADO NET 2.Outputs[Salida de origen de ADO NET]" />
             <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET4]"
-              endId="Package\TblasHechos\Data Conversion 3.Inputs[Data Conversion Input]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET 7.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET3]"
-              endId="Package\TblasHechos\Union All 1.Inputs[Union All Input 2]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\OrigenADONETP2_V.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET2]"
-              endId="Package\TblasHechos\Sort 10.Inputs[Sort Input]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NETCliente.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET1]"
-              endId="Package\TblasHechos\Sort 16.Inputs[Sort Input]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET 6.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET]"
-              endId="Package\TblasHechos\Data Conversion 1.Inputs[Data Conversion Input]"
-              name="Salida de origen de ADO NET"
-              startId="Package\TblasHechos\Origen de ADO NET 3.Outputs[Salida de origen de ADO NET]" />
-            <path
-              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET5]"
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET6]"
               endId="Package\TblasHechos\Sort 14.Inputs[Sort Input]"
               name="Salida de origen de ADO NET"
               startId="Package\TblasHechos\Origen de ADO NET 5.Outputs[Salida de origen de ADO NET]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output19]"
-              endId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET8]"
+              endId="Package\TblasHechos\Union All.Inputs[Union All Input 2]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\OrigenADONETP2_C.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET4]"
+              endId="Package\TblasHechos\Sort 1.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET3]"
+              endId="Package\TblasHechos\Union All 1.Inputs[Union All Input 1]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\OrigenADONETP1_V.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET2]"
+              endId="Package\TblasHechos\Sort 12.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\Origen de ADO NET 4.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET1]"
+              endId="Package\TblasHechos\Data Conversion 3.Inputs[Data Conversion Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\Origen de ADO NET 7.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET]"
+              endId="Package\TblasHechos\Sort 2.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\Origen de ADO NET 1.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Salida de origen de ADO NET5]"
+              endId="Package\TblasHechos\Sort 10.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\TblasHechos\Origen de ADO NETCliente.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output12]"
+              endId="Package\TblasHechos\UnionProveedor.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\TblasHechos\Sort 19.Outputs[Sort Output]" />
+              startId="Package\TblasHechos\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output13]"
+              endId="Package\TblasHechos\UnionProveedor.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output14]"
+              endId="Package\TblasHechos\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 6.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output15]"
+              endId="Package\TblasHechos\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 7.Outputs[Sort Output]" />
             <path
               refId="Package\TblasHechos.Paths[Sort Output18]"
               endId="Package\TblasHechos\Merge Vendedor.Inputs[Merge Join Left Input]"
@@ -50040,99 +51166,94 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               startId="Package\TblasHechos\Sort 11.Outputs[Sort Output]" />
             <path
               refId="Package\TblasHechos.Paths[Sort Output17]"
-              endId="Package\TblasHechos\Merge Join 1.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 6.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output16]"
-              endId="Package\TblasHechos\Merge Join 1.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 7.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output15]"
-              endId="Package\TblasHechos\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output14]"
-              endId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 8.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output13]"
-              endId="Package\TblasHechos\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 3.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output12]"
-              endId="Package\TblasHechos\UnionCliente.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 9.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output11]"
               endId="Package\TblasHechos\UnionCliente.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 10.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output10]"
-              endId="Package\TblasHechos\UnionProveedor.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 1.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output8]"
-              endId="Package\TblasHechos\Sucursal.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 4.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output7]"
+              refId="Package\TblasHechos.Paths[Sort Output19]"
               endId="Package\TblasHechos\Merge Vendedor.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 12.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output6]"
-              endId="Package\TblasHechos\Sucursal.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\TblasHechos\Sort 5.Outputs[Sort Output]" />
-            <path
-              refId="Package\TblasHechos.Paths[Sort Output5]"
+              refId="Package\TblasHechos.Paths[Sort Output20]"
               endId="Package\TblasHechos\Merge Producto.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 13.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output4]"
+              refId="Package\TblasHechos.Paths[Sort Output21]"
               endId="Package\TblasHechos\Merge Producto.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 14.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output3]"
-              endId="Package\TblasHechos\Merge Sucursal.Inputs[Merge Join Left Input]"
+              refId="Package\TblasHechos.Paths[Sort Output16]"
+              endId="Package\TblasHechos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
               name="Sort Output"
-              startId="Package\TblasHechos\Sort 15.Outputs[Sort Output]" />
+              startId="Package\TblasHechos\Sort 21.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output2]"
+              refId="Package\TblasHechos.Paths[Sort Output11]"
+              endId="Package\TblasHechos\Sucursal.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 5.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output9]"
+              endId="Package\TblasHechos\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output8]"
+              endId="Package\TblasHechos\UnionCliente.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 9.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output7]"
+              endId="Package\TblasHechos\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output6]"
               endId="Package\TblasHechos\Merge Sucursal.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 16.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output1]"
+              refId="Package\TblasHechos.Paths[Sort Output5]"
+              endId="Package\TblasHechos\Derived Column 1.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 19.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output4]"
               endId="Package\TblasHechos\Merge Join 2.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 18.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output]"
+              refId="Package\TblasHechos.Paths[Sort Output3]"
               endId="Package\TblasHechos\Merge Join 2.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\TblasHechos\Sort 17.Outputs[Sort Output]" />
             <path
-              refId="Package\TblasHechos.Paths[Sort Output9]"
-              endId="Package\TblasHechos\UnionProveedor.Inputs[Merge Join Left Input]"
+              refId="Package\TblasHechos.Paths[Sort Output2]"
+              endId="Package\TblasHechos\Destino de ADO NETCompras.Inputs[Entrada de destino de ADO NET]"
               name="Sort Output"
-              startId="Package\TblasHechos\Sort.Outputs[Sort Output]" />
+              startId="Package\TblasHechos\Sort 20.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output1]"
+              endId="Package\TblasHechos\Merge Sucursal.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 15.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output]"
+              endId="Package\TblasHechos\Derived Column.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 8.Outputs[Sort Output]" />
+            <path
+              refId="Package\TblasHechos.Paths[Sort Output10]"
+              endId="Package\TblasHechos\Sucursal.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\TblasHechos\Sort 4.Outputs[Sort Output]" />
             <path
               refId="Package\TblasHechos.Paths[Union All Output 12]"
-              endId="Package\TblasHechos\Data Conversion.Inputs[Data Conversion Input]"
+              endId="Package\TblasHechos\Union All 2.Inputs[Union All Input 1]"
               name="Union All Output 1"
-              startId="Package\TblasHechos\Union All 2.Outputs[Union All Output 1]" />
+              startId="Package\TblasHechos\Union All 1.Outputs[Union All Output 1]" />
             <path
               refId="Package\TblasHechos.Paths[Union All Output 1]"
               endId="Package\TblasHechos\Data Conversion 2.Inputs[Data Conversion Input]"
@@ -50140,14 +51261,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               startId="Package\TblasHechos\Union All 4.Outputs[Union All Output 1]" />
             <path
               refId="Package\TblasHechos.Paths[Union All Output 11]"
-              endId="Package\TblasHechos\Union All 2.Inputs[Union All Input 1]"
-              name="Union All Output 1"
-              startId="Package\TblasHechos\Union All 1.Outputs[Union All Output 1]" />
-            <path
-              refId="Package\TblasHechos.Paths[Union All Output 13]"
               endId="Package\TblasHechos\Union All 4.Inputs[Union All Input 1]"
               name="Union All Output 1"
               startId="Package\TblasHechos\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\TblasHechos.Paths[Union All Output 13]"
+              endId="Package\TblasHechos\Data Conversion.Inputs[Data Conversion Input]"
+              name="Union All Output 1"
+              startId="Package\TblasHechos\Union All 2.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -52222,7 +53343,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     design-time-name="Package\TblasHechos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\TblasHechos\Flat File Source 1"
@@ -52314,7 +53435,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Union All Output 11]"
+          Id="Package\TblasHechos.Paths[Union All Output 12]"
           TopLeft="1015.43096615185,239.786277289291">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52348,7 +53469,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Union All Output 12]"
+          Id="Package\TblasHechos.Paths[Union All Output 13]"
           TopLeft="1153.97977842782,332.188239369508">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52370,7 +53491,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Union All Output 13]"
+          Id="Package\TblasHechos.Paths[Union All Output 11]"
           TopLeft="205.535716764173,247.114708764619">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52404,7 +53525,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET11]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET3]"
           TopLeft="909.050807592334,106.706210063417">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52438,7 +53559,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET10]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET11]"
           TopLeft="94.5634921412079,85.4643797001487">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52472,7 +53593,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET7]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET8]"
           TopLeft="284.150003299543,85.570588851965">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52506,7 +53627,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET3]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET10]"
           TopLeft="1104.6857315589,105.006863634355">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52540,7 +53661,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Flat File Source Output1]"
+          Id="Package\TblasHechos.Paths[Flat File Source Output]"
           TopLeft="504.371434592714,85.6980398341447">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52562,7 +53683,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Flat File Source Output]"
+          Id="Package\TblasHechos.Paths[Flat File Source Output1]"
           TopLeft="1330.19048691526,104.597199763064">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52664,7 +53785,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 1"
           TopLeft="428.5,488.5" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET8]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET4]"
           TopLeft="484.35,432.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52686,7 +53807,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Data Conversion Output3]"
+          Id="Package\TblasHechos.Paths[Data Conversion Output2]"
           TopLeft="202.092064526022,431.129413730903">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52712,7 +53833,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\UnionProveedor"
           TopLeft="259.111111111111,577.555555555556" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output9]"
+          Id="Package\TblasHechos.Paths[Sort Output13]"
           TopLeft="200.355555555555,528.377777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52746,7 +53867,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output10]"
+          Id="Package\TblasHechos.Paths[Sort Output12]"
           TopLeft="481.7,530.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52792,7 +53913,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 3"
           TopLeft="294.666666666667,656.444444444444" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output3]"
+          Id="Package\TblasHechos.Paths[Merge Join Output8]"
           TopLeft="346.488888888889,619.155555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52814,7 +53935,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET12]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET]"
           TopLeft="742.577777777778,612.266666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52840,7 +53961,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Merge Join"
           TopLeft="500.222222222222,731.111111111111" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output13]"
+          Id="Package\TblasHechos.Paths[Sort Output7]"
           TopLeft="347.866666666667,698.044444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52874,7 +53995,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output15]"
+          Id="Package\TblasHechos.Paths[Sort Output9]"
           TopLeft="744.533333333333,694.488888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52920,7 +54041,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 5"
           TopLeft="919.111111111111,811.333333333333" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output2]"
+          Id="Package\TblasHechos.Paths[Merge Join Output6]"
           TopLeft="566.444444444444,772.711111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -52968,7 +54089,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sucursal"
           TopLeft="708,884.444444444444" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output8]"
+          Id="Package\TblasHechos.Paths[Sort Output10]"
           TopLeft="567.866666666667,848.488888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53002,7 +54123,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output6]"
+          Id="Package\TblasHechos.Paths[Sort Output11]"
           TopLeft="972.311111111111,852.933333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53044,7 +54165,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 6"
           TopLeft="722.444444444444,982" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output5]"
+          Id="Package\TblasHechos.Paths[Merge Join Output2]"
           TopLeft="776.422222222222,926.044444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53070,7 +54191,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Data Conversion 1"
           TopLeft="1078,983.111111111111" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET7]"
           TopLeft="1163.84444444444,923.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53096,7 +54217,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 7"
           TopLeft="1105.77777777778,1077.11111111111" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Data Conversion Output4]"
+          Id="Package\TblasHechos.Paths[Data Conversion Output1]"
           TopLeft="1159.68888888889,1024.71111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53122,7 +54243,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Merge Join 1"
           TopLeft="870.222222222222,1160.44444444444" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output17]"
+          Id="Package\TblasHechos.Paths[Sort Output14]"
           TopLeft="775.644444444444,1023.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53156,7 +54277,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output16]"
+          Id="Package\TblasHechos.Paths[Sort Output15]"
           TopLeft="1158.97777777778,1118.71111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53194,7 +54315,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 8"
           TopLeft="884.666666666667,1239.55555555556" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output]"
+          Id="Package\TblasHechos.Paths[Merge Join Output7]"
           TopLeft="938.644444444444,1202.04444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53218,29 +54339,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="216.8,41.6"
           Id="Package\TblasHechos\Destino de ADO NETCompras"
-          TopLeft="843.555555555555,1323.11111111111" />
-        <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output14]"
-          TopLeft="934.711111111111,1281.15555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.9555555555555"
-              Start="0,0"
-              End="0,34.4555555555555">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.4555555555555" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="826.888888888889,1474.22222222222" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TblasHechos\Origen de ADO NETCliente"
@@ -53254,7 +54353,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 10"
           TopLeft="1336.22222222222,486.666666666667" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET2]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET5]"
           TopLeft="1394.62222222222,436.044444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53276,7 +54375,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Data Conversion Output2]"
+          Id="Package\TblasHechos.Paths[Data Conversion Output3]"
           TopLeft="1155.00516692073,436.276475092614">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53302,7 +54401,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\UnionCliente"
           TopLeft="1213.77777777778,565.555555555556" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output12]"
+          Id="Package\TblasHechos.Paths[Sort Output8]"
           TopLeft="1156.08888888889,528.266666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53336,7 +54435,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output11]"
+          Id="Package\TblasHechos.Paths[Sort Output17]"
           TopLeft="1392.62222222222,528.266666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53382,7 +54481,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 12"
           TopLeft="1489.33333333333,646.444444444445" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output4]"
+          Id="Package\TblasHechos.Paths[Merge Join Output5]"
           TopLeft="1284.15555555556,607.155555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53404,7 +54503,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET6]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET2]"
           TopLeft="1544.95555555556,599.155555555555">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53464,7 +54563,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output7]"
+          Id="Package\TblasHechos.Paths[Sort Output19]"
           TopLeft="1545.73333333333,688.044444444445">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53510,7 +54609,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 14"
           TopLeft="1669.55555555556,804" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET5]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET6]"
           TopLeft="1722.95555555556,772.933333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53532,7 +54631,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output6]"
+          Id="Package\TblasHechos.Paths[Merge Join Output4]"
           TopLeft="1412.08888888889,768.044444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53558,7 +54657,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Merge Producto"
           TopLeft="1486.22222222222,880.222222222222" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output5]"
+          Id="Package\TblasHechos.Paths[Sort Output20]"
           TopLeft="1408.17777777778,844.488888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53592,7 +54691,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output4]"
+          Id="Package\TblasHechos.Paths[Sort Output21]"
           TopLeft="1725.95555555556,845.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53638,7 +54737,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 16"
           TopLeft="1846,971.333333333333" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output7]"
+          Id="Package\TblasHechos.Paths[Merge Join Output3]"
           TopLeft="1564.17777777778,921.822222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53660,7 +54759,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET1]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET12]"
           TopLeft="1902.84444444444,925.155555555555">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53686,7 +54785,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Merge Sucursal"
           TopLeft="1689.33333333333,1074" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output3]"
+          Id="Package\TblasHechos.Paths[Sort Output1]"
           TopLeft="1565.73333333333,1021.82222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53720,7 +54819,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output2]"
+          Id="Package\TblasHechos.Paths[Sort Output6]"
           TopLeft="1902.4,1012.93333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53762,7 +54861,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Data Conversion 3"
           TopLeft="2046.22222222222,1153.33333333333" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET4]"
+          Id="Package\TblasHechos.Paths[Salida de origen de ADO NET1]"
           TopLeft="2138.17777777778,1104.93333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53800,7 +54899,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 17"
           TopLeft="2069.33333333333,1237.55555555556" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Data Conversion Output1]"
+          Id="Package\TblasHechos.Paths[Data Conversion Output4]"
           TopLeft="2127.17777777778,1194.93333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53826,7 +54925,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Sort 18"
           TopLeft="1701.55555555556,1236.44444444444" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output8]"
+          Id="Package\TblasHechos.Paths[Merge Join Output1]"
           TopLeft="1761.24444444444,1115.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53852,7 +54951,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Id="Package\TblasHechos\Merge Join 2"
           TopLeft="1862.66666666667,1343.11111111111" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output1]"
+          Id="Package\TblasHechos.Paths[Sort Output4]"
           TopLeft="1757.95555555556,1278.04444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53886,7 +54985,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output]"
+          Id="Package\TblasHechos.Paths[Sort Output3]"
           TopLeft="2125.73333333333,1279.15555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53922,13 +55021,129 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="176,41.6"
           Id="Package\TblasHechos\Destino de ADO NET"
-          TopLeft="1844.66666666667,1503.77777777778" />
+          TopLeft="1839.21212121212,1587.41414141414" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\TblasHechos\Sort 19"
           TopLeft="1870.22222222222,1428.22222222222" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\TblasHechos\Derived Column"
+          TopLeft="638.888888888889,1242.66666666667" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Merge Join Output1]"
+          Id="Package\TblasHechos.Paths[Sort Output]"
+          TopLeft="884.666666666667,1261.91111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-92.9777777777776,0"
+              Start="0,0"
+              End="-85.4777777777776,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-85.4777777777776,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\TblasHechos\Conditional Split"
+          TopLeft="404.888888888889,1247.11111111111" />
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[Derived Column Output]"
+          TopLeft="638.888888888889,1265.68888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-79.6000000000001,0"
+              Start="0,0"
+              End="-72.1000000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-72.1000000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\TblasHechos\Sort 20"
+          TopLeft="878.222222222222,1329.33333333333" />
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[NotNull1]"
+          TopLeft="482.088888888889,1288.71111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="452.533333333333,40.622222222222"
+              Start="0,0"
+              End="452.533333333333,33.122222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.311111111111" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.311111111111"
+                    Point2="0,20.311111111111"
+                    Point3="4,20.311111111111" />
+                  <mssgle:LineSegment
+                    End="448.533333333333,20.311111111111" />
+                  <mssgle:CubicBezierSegment
+                    Point1="448.533333333333,20.311111111111"
+                    Point2="452.533333333333,20.311111111111"
+                    Point3="452.533333333333,24.311111111111" />
+                  <mssgle:LineSegment
+                    End="452.533333333333,33.122222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="209.844537760417,25.311111111111,32.8442578125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[Sort Output2]"
+          TopLeft="934.955555555556,1370.93333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,103.288888888889"
+              Start="0,0"
+              End="0,95.788888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,95.788888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,39.8944444444445,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[Merge Join Output]"
           TopLeft="1929.24444444444,1384.71111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -53949,20 +55164,112 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\TblasHechos\Derived Column 1"
+          TopLeft="1652.66666666667,1423.33333333333" />
         <EdgeLayout
-          Id="Package\TblasHechos.Paths[Sort Output19]"
-          TopLeft="1929.64444444444,1469.82222222222">
+          Id="Package\TblasHechos.Paths[Sort Output5]"
+          TopLeft="1870.22222222222,1446.57777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.9555555555553"
+              EndConnector="-55.1555555555558,0"
               Start="0,0"
-              End="0,26.4555555555553">
+              End="-47.6555555555558,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.4555555555553" />
+                    End="-47.6555555555558,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\TblasHechos\Conditional Split 1"
+          TopLeft="1451.27272727273,1424" />
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[Derived Column Output1]"
+          TopLeft="1652.66666666667,1444.46666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.1939393939388,0"
+              Start="0,0"
+              End="-30.6939393939388,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-30.6939393939388,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\TblasHechos\Sort 21"
+          TopLeft="1872.18181818182,1499.09090909091" />
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[NotNull]"
+          TopLeft="1532.87272727273,1465.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="395.709090909091,33.4909090909093"
+              Start="0,0"
+              End="395.709090909091,25.9909090909093">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7454545454547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7454545454547"
+                    Point2="0,16.7454545454547"
+                    Point3="4,16.7454545454547" />
+                  <mssgle:LineSegment
+                    End="391.709090909091,16.7454545454547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="391.709090909091,16.7454545454547"
+                    Point2="395.709090909091,16.7454545454547"
+                    Point3="395.709090909091,20.7454545454547" />
+                  <mssgle:LineSegment
+                    End="395.709090909091,25.9909090909093" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="181.432416548296,21.7454545454547,32.8442578125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TblasHechos.Paths[Sort Output16]"
+          TopLeft="1927.89696969697,1540.69090909091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.723232323232"
+              Start="0,0"
+              End="0,39.223232323232">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.223232323232" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
